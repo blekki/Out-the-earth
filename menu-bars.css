@@ -1,0 +1,264 @@
+.vertical-menu {
+    position: fixed;
+    text-align: center;
+    width: 60px;
+    height: 100%;
+    background-color: var(--color-2);
+}
+
+.logo {
+    display: grid;
+    color: var(--color-text);
+    height: 10%;
+    width: 100%;
+}
+
+.logo a {
+    bottom: 50%;
+    font-size: x-large;
+    line-height: 4;
+
+    transition: 3s;
+}
+
+.logo :hover {
+    background-color: var(--color-4);
+    border-right: 2px solid white;
+    transition: 0.5s;
+}
+
+.vertical-menu-text {
+    display: grid;
+    color: var(--color-text);
+    height: 90%;
+    width: 100%;
+}
+
+.vertical-menu-text a {
+    writing-mode: sideways-lr;
+    font-size: large;
+    line-height: 3;
+
+    transition: 0.7s;
+}
+
+.vertical-menu-text :hover {
+    background-color: var(--color-2hover);
+    border-right: 2px solid white;
+
+    transition: border-right 0.2s, background-color 0.5s;
+}
+/* <><><><><><><><><><><><><><><><><><><><><><><><><> */
+
+.info-menu{
+    position: absolute;
+    left: 80px; 
+    top: 60px;
+    width: 350px;
+    height: 0px; 
+    
+    border-bottom-right-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+
+    line-height: 1.5;
+    background-color: var(--color-1);
+    overflow: auto;
+
+    transition: var(--closing-speed);
+}
+
+.info-menu-show {
+    height: 570px;
+    transition: height var(--opening-speed);
+}
+
+.info-menu-bar {
+    position: absolute;
+    left: 80px;
+    top: 20px;
+    width: 350px;
+    height: 40px;
+
+    line-height: 2;
+    background-color: var(--color-2);
+    color: var(--color-1);
+
+    overflow: hidden;
+}
+.info-menu-bar * {
+    transition: var(--hover-speed);
+}
+.info-menu-bar span:hover {
+    background-color: var(--color-2hover);
+    transition: var(--hover-speed);
+}
+.info-menu-bar a:hover {
+    background-color: var(--color-2hover);
+    transform: translateY(-4px);
+    transition: var(--hover-speed);
+}
+
+.info-menu img {
+    position: relative;
+    left: 10px;
+    width: 160px;
+    height: 160px;
+}
+
+.info-menu-text {
+    position: absolute;
+    left: 10px;
+    width: 90%;
+}
+
+/* <><><><><><><><><><><><><><><><><><><><><><><><><> */
+
+.chat-menu {
+    position: absolute;
+    left: 80px;
+    bottom: 10px;
+    width: 350px;
+    height: 10px; 
+    border-radius: var(--border-radius);
+    line-height: 1.5;
+    background-color: var(--color-1);
+    overflow: auto;
+
+    transition: height var(--opening-speed);
+}
+
+.chat-menu-show {
+    height: 250px;
+    transition: height var(--closing-speed);
+}
+
+.chat-menu-bar {
+    position: absolute;
+    left: 80px;
+    bottom: 10px; 
+    width: 350px;
+    height: 40px;
+
+    line-height: 2;
+    color: var(--color-1);
+    background-color: var(--color-2);
+    overflow: hidden;
+
+    transition: var(--opening-speed);
+}
+.chat-menu-bar * {
+    transition: var(--hover-speed);
+}
+.chat-menu-bar span:hover {
+    background-color: var(--color-2hover);
+    transition: var(--hover-speed);
+}
+.chat-menu-bar a:hover {
+    background-color: var(--color-2hover);
+    transform: translateY(-4px);
+    transition: var(--hover-speed);
+}
+
+.chat-menu-bar-show {
+    bottom: 240px;
+    transition: bottom var(--closing-speed);
+}
+
+.chat-menu-bar a:hover {
+    background-color: var(--color-2hover);
+}
+
+.chat-stream {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 330px;
+    height: 190px;
+    background-color: var(--color-1);
+
+    overflow: auto;
+}
+
+.chat-bar {
+    position: absolute;
+    display: inline-block;
+    left: 10px;
+    bottom: 10px;
+    width: 330px;
+    height: 40px;
+
+    overflow: hidden;
+}
+
+.chat-bar input {
+    position: absolute;
+    display: inline-block;
+    line-height: 1;
+    background-color: var(--color-2);
+    color: var(--color-text);
+    left: 0px;
+    width: 85%;
+    height: 100%;
+    border-style: none;
+
+    overflow: auto;
+}
+
+.chat-bar a {
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    right: 0px;
+    width: 14%;
+    height: 100%;
+
+    color: var(--color-text);
+    font-size: large;
+    line-height: 2;
+
+    background-color: var(--color-2);
+    border-left: 4px solid;
+    border-color: var(--color-1);
+}
+
+.chat-bar a:hover {
+    background-color: var(--color-2hover);
+}
+
+/* theme block */
+.themes {
+    position: absolute;
+    text-align: center;
+    left: 440px;
+    bottom: 10px;
+    width: 0px;
+    height: 270px;
+    
+    font-size: large;
+    line-height: 1.5;
+    background-color: var(--color-1);
+    
+    overflow: hidden;
+    transition: width var(--closing-speed);
+}
+
+.themes-show {
+    width: 120px;
+    transition: width var(--opening-speed);
+}
+
+.themes a {
+    display: block;
+    text-decoration: none;
+    width: 100%;
+    height: 40px;
+    background-color: var(--color-2);
+    overflow: auto;
+
+    border-bottom: 1px solid;
+    border-color: var(--color-2hover);
+}
+
+.themes a:hover {
+    background-color: var(--color-2hover);
+}

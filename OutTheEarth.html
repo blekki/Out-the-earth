@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My project page</title>
+        <link rel="stylesheet" href="basic-styles.css" />
+        <link rel="stylesheet" href="menu-bars.css" />
+    </head>
+    
+    <body class="basic">
+        <!-- vertical menu bar -->
+        <div class="vertical-menu">
+            <div class="logo">
+            <a>A</a>
+            </div>
+            <div class="vertical-menu-text">
+                <a>Home page</a>
+                <a>Visitors posts</a>
+                <a>Gallery</a>
+            </div>
+        </div>
+
+        <!-- information menu -->
+        <div id="info-menu-id" class="info-menu">
+            <h1></h1>
+            <div>
+                <img src="star.png" alt="star">
+            </div>
+            
+            <div class="info-menu-text">
+                <p>This information about kgvhbjioygtfgvhbnjij yggbhnji huyghbn johuiyg 56787 86789876t789 ijhbgvhuijk lmkhbgju ioklm jhbnk kiohuybjnjkm</p>
+                <p>This information about kgvhbjioygtfgvhbnjij yggbhnji huyghbn johuiyg 56787 86789876t789 ijhbgvhuijk lmkhbgju ioklm jhbnk kiohuybjnjkm</p>
+                <p>This information about kgvhbjioygtfgvhbnjij yggbhnji huyghbn johuiyg 56787 86789876t789 ijhbgvhuijk lmkhbgju ioklm jhbnk kiohuybjnjkm</p>
+                <p>This information about kgvhbjioygtfgvhbnjij yggbhnji huyghbn johuiyg 56787 86789876t789 ijhbgvhuijk lmkhbgju ioklm jhbnk kiohuybjnjkm</p>
+                <p>This information about kgvhbjioygtfgvhbnjij yggbhnji huyghbn johuiyg 56787 86789876t789 ijhbgvhuijk lmkhbgju ioklm jhbnk kiohuybjnjkm</p>
+                <p>dfgkebdhjfhdjko wejfhwefkjgsdfjskjfhdjsklfndhjgds fn gndfkjg fgkdf gkdfng</p>
+            </div>
+        </div>
+        <div class="info-menu-bar">
+            <span class="menu-bar-text">Information page</span>
+            <a href="javascript:changeMenuState()" class="menu-bar-close">=</a>
+        </div>
+
+        <!-- chat menu -->
+        <div id="chat-menu-id" class="chat-menu">
+            <div class="chat-stream">
+                <p>This information about kgvhbjioygtfgvhbnjij yggbhnji huyghbn johuiyg 56787 86789876t789 ijhbgvhuijk lmkhbgju ioklm jhbnk kiohuybjnjkm</p>
+                <p>This information about kgvhbjioygtfgvhbnjij yggbhnji huyghbn johuiyg 56787 86789876t789 ijhbgvhuijk lmkhbgju ioklm jhbnk kiohuybjnjkm</p>
+                <p>This information about kgvhbjioygtfgvhbnjij yggbhnji huyghbn johuiyg 56787 86789876t789 ijhbgvhuijk lmkhbgju ioklm jhbnk kiohuybjnjkm</p>
+                <p>This information about kgvhbjioygtfgvhbnjij yggbhnji huyghbn johuiyg 56787 86789876t789 ijhbgvhuijk lmkhbgju ioklm jhbnk kiohuybjnjkm</p>
+            </div>
+            <div class="chat-bar">
+                <input value>
+                <a id="themes-choiced-id" href="javascript:changeThemesMenuState()">T</a>
+            </div>
+        </div>
+        <div id="themes-menu-id" class="themes">
+            <a>Theme Basic</a>
+            <a>Theme+</a>
+            <a>A</a>
+            <a>B</a>
+            <a>C</a>
+            <a>D</a>
+            <a>E</a>
+            <a>F</a>
+            <a>G</a>
+            <a>H</a>
+        </div>
+        <div id="chat-menu-close-id" class="chat-menu-bar">
+            <span class="menu-bar-text">Tiny chat</span>
+            <a href="javascript:changeChatState()" class="menu-bar-close">=</a>
+        </div>
+        
+
+        <!-- javascript -->
+        <script>
+            function changeMenuState() {
+                var menu = document.getElementById("info-menu-id");
+                menu.classList.toggle("info-menu-show");
+            }
+
+            function changeChatState() {
+                var chat = document.getElementById("chat-menu-id");
+                var closeBar = document.getElementById("chat-menu-close-id");
+                var themeMenu = document.getElementById("themes-menu-id");
+
+                chat.classList.toggle("chat-menu-show");
+                closeBar.classList.toggle("chat-menu-bar-show");
+                if (chat.classList.contains("chat-menu-show") == false)
+                    themeMenu.classList.remove("themes-show");      
+            }
+
+            function changeThemesMenuState() {
+                var themes = document.getElementById("themes-menu-id");
+                themes.classList.toggle("themes-show");
+            }
+
+        </script>
+    </body>
+</html>

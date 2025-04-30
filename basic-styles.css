@@ -1,0 +1,58 @@
+:root {
+    --color-back: #0c0f1e;
+    --color-1: #143041;
+    /* --color-2: #214f5f; */
+    --color-2: #0a2638;
+    --color-2hover: #0e354d;
+    --color-3: #6b504c;
+    --color-4: #e2773a;
+    --color-4plus: #ff6811;
+    --color-5: #ffcb68;
+    --color-text: rgb(227, 254, 247);
+
+    --border-radius: 2px;
+
+    /* todo: add hover generally color */
+
+    --hover-speed: 0.7s;
+    --closing-speed: 0.7s;
+    --opening-speed: 0.7s;
+}
+
+.basic {
+    position: fixed;
+    margin-top: 0;
+    margin-left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--color-back);
+    scroll-behavior: smooth;
+
+    font-family: "Georgia";
+    font-size: medium;
+    color: var(--color-text);
+}
+
+.menu-bar-text {
+    display: grid;
+    position: absolute;
+    left: 0%;
+    width: 90%;
+    height: 120%;
+
+    color: var(--color-text);
+    text-decoration: none;
+    text-align: center;
+}
+
+.menu-bar-close {
+    display: grid;
+    position: absolute;
+    right: 0%;
+    width: 10%;
+    height: 120%;
+
+    color: var(--color-text);
+    text-decoration: none;
+    text-align: center;
+}
