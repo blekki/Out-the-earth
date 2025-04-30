@@ -102,35 +102,13 @@
 
             const properties = new Properties();
 
-            window.onload = function prepare() {
-                // src="./ObservingTheStar.opus" style="display: none;" loop="true" autoplay
-                const audio = document.getElementById("audio-id");
-                audio.src = "./ObservingTheStar.opus";
-                audio.volume = document.getElementById("music-id").value / 10.0;
-                audio.loop = "true";
-                audio.play();
-            }
-                // const properties = new Properties();
-                // const soundSlider = document.getElementById("sound-id"); // sound slider
-                // properties.setSoundVolume(soundSlider.value);
-                // const musicSlider = document.getElementById("music-id"); // music slider
-                // properties.setMusicVolume(musicSlider.value);
-
-                // const audio = document.getElementById("audio-id");
-                // audio.volume = properties.getMusicVolume();
-
-                // console.log("sound volume: ", properties.getSoundVolume());
-                // console.log("music volume: ", properties.getMusicVolume());
-                // return properties;
-            // }
-            // const properties = window.onload;
-            // properties.getAudio().volume = properties.getMusicVolume();
-
+            // change sound volume
             const soundSlider = document.getElementById("sound-id");
             soundSlider.oninput = function() {
                 properties.setSoundVolume(soundSlider.value);
                 console.log(properties.getSoundVolume()); // logs
             }
+            // change music volume
             const musicSlider = document.getElementById("music-id");
             musicSlider.oninput = function() {
                 properties.setMusicVolume(musicSlider.value);
@@ -140,6 +118,7 @@
                 music.volume = properties.getMusicVolume();
             }
 
+            // play sound
             function playSound(audioTrack) {
                 const sound = new Audio();
                 switch (audioTrack) {
@@ -149,6 +128,7 @@
                 sound.volume = properties.getSoundVolume();
                 sound.play();
             }
+            
             // menu about sound
             function changeSoundMenu() {
                 var volume = document.getElementById("sound-menu-id");
@@ -181,6 +161,15 @@
             function changeThemesMenuState() {
                 var themes = document.getElementById("themes-menu-id");
                 themes.classList.toggle("themes-show");
+            }
+
+            // preparation
+            window.onload = function prepare() {
+                const audio = document.getElementById("audio-id");
+                audio.src = "./ObservingTheStar.opus";
+                audio.volume = document.getElementById("music-id").value / 10.0;
+                audio.loop = "true";
+                audio.play();
             }
         </script>
     </body>
