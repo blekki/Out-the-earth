@@ -4,9 +4,10 @@
         <title>My project page</title>
         <link rel="stylesheet" href="basic-styles.css" />
         <link rel="stylesheet" href="menu-bars.css" />
+        <link rel="stylesheet" href="sliders.css" />
     </head>
     
-    <body class="basic">
+    <body class="basic"></body>
         <!-- vertical menu bar -->
         <div class="vertical-menu">
             <div class="logo">
@@ -17,6 +18,16 @@
                 <a>Visitors posts</a>
                 <a>Gallery</a>
             </div>
+        </div>
+        <!-- sound buttons -->
+        <div id="sound-menu-id" class="volume" style="bottom: 60px">
+            <input id="sound-id" type="range" min="0" max="10" value="5">
+            <a href="javascript:changeSoundMenu()">S</a>
+        </div>
+
+        <div id="music-menu-id" class="volume" style="bottom: 10px">
+            <input id="music-id" type="range" min="0" max="10" value="5">
+            <a href="javascript:changeMusicMenu()">M</a>
         </div>
 
         <!-- information menu -->
@@ -70,14 +81,92 @@
             <a href="javascript:changeChatState()" class="menu-bar-close">=</a>
         </div>
         
+        <audio id="audio-id" style="display: none;"></audio>
 
         <!-- javascript -->
-        <script>
+        <script type="text/javascript">
+            class Properties {
+                constructor() {
+                    this.soundVolume = document.getElementById("sound-id").value / 10.0;
+                    this.musicVolume = document.getElementById("music-id").value / 10.0;
+                }
+                getSoundVolume() { return this.soundVolume; }
+                getMusicVolume() { return this.musicVolume; }
+                setSoundVolume(soundVolume) { this.soundVolume = soundVolume / 10.0; }
+                setMusicVolume(musicVolume) { this.musicVolume = musicVolume / 10.0; }
+            };
+            const AudioTrack = {
+                CLICK: "CLICK",
+                OTHER: "NOTHING"
+            };
+
+            const properties = new Properties();
+
+            window.onload = function prepare() {
+                // src="./ObservingTheStar.opus" style="display: none;" loop="true" autoplay
+                const audio = document.getElementById("audio-id");
+                audio.src = "./ObservingTheStar.opus";
+                audio.volume = document.getElementById("music-id").value / 10.0;
+                audio.loop = "true";
+                audio.play();
+            }
+                // const properties = new Properties();
+                // const soundSlider = document.getElementById("sound-id"); // sound slider
+                // properties.setSoundVolume(soundSlider.value);
+                // const musicSlider = document.getElementById("music-id"); // music slider
+                // properties.setMusicVolume(musicSlider.value);
+
+                // const audio = document.getElementById("audio-id");
+                // audio.volume = properties.getMusicVolume();
+
+                // console.log("sound volume: ", properties.getSoundVolume());
+                // console.log("music volume: ", properties.getMusicVolume());
+                // return properties;
+            // }
+            // const properties = window.onload;
+            // properties.getAudio().volume = properties.getMusicVolume();
+
+            const soundSlider = document.getElementById("sound-id");
+            soundSlider.oninput = function() {
+                properties.setSoundVolume(soundSlider.value);
+                console.log(properties.getSoundVolume()); // logs
+            }
+            const musicSlider = document.getElementById("music-id");
+            musicSlider.oninput = function() {
+                properties.setMusicVolume(musicSlider.value);
+                console.log(properties.getMusicVolume()); // logs
+
+                const music = document.getElementById("audio-id");
+                music.volume = properties.getMusicVolume();
+            }
+
+            function playSound(audioTrack) {
+                const sound = new Audio();
+                switch (audioTrack) {
+                    case AudioTrack.CLICK: sound.src = "./mixkit.wav"; break;
+                    default: console.log(AudioTrack.NOTHING);
+                }
+                sound.volume = properties.getSoundVolume();
+                sound.play();
+            }
+            // menu about sound
+            function changeSoundMenu() {
+                var volume = document.getElementById("sound-menu-id");
+                volume.classList.toggle("volume-show");
+                playSound(AudioTrack.CLICK);
+            }
+            function changeMusicMenu() {
+                var volume = document.getElementById("music-menu-id");
+                volume.classList.toggle("volume-show");
+                playSound(AudioTrack.CLICK);
+            }
+
+            // basic menu
             function changeMenuState() {
                 var menu = document.getElementById("info-menu-id");
                 menu.classList.toggle("info-menu-show");
+                playSound(AudioTrack.CLICK);
             }
-
             function changeChatState() {
                 var chat = document.getElementById("chat-menu-id");
                 var closeBar = document.getElementById("chat-menu-close-id");
@@ -86,14 +175,13 @@
                 chat.classList.toggle("chat-menu-show");
                 closeBar.classList.toggle("chat-menu-bar-show");
                 if (chat.classList.contains("chat-menu-show") == false)
-                    themeMenu.classList.remove("themes-show");      
+                    themeMenu.classList.remove("themes-show");
+                playSound(AudioTrack.CLICK);
             }
-
             function changeThemesMenuState() {
                 var themes = document.getElementById("themes-menu-id");
                 themes.classList.toggle("themes-show");
             }
-
         </script>
     </body>
 </html>

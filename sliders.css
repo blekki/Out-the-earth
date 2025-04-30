@@ -1,0 +1,44 @@
+.volume {
+    position: absolute;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-2);
+    transition: var(--closing-speed);
+}
+
+.volume :hover {
+    background-color: var(--color-2hover);
+    transition: var(--hover-speed);
+}
+
+.volume-show {
+    right: 10px;
+    width: 200px;
+    transition: var(--opening-speed);
+}
+
+.volume a {
+    position: absolute;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    line-height: 2;
+    height: 100%;
+    width: 40px; 
+    right: 0px;
+    margin: auto;
+    color: var(--color-text);
+    background-color: var(--color-2);
+    transition: var(--hover-speed);
+}
+
+.volume input {
+    position: absolute;
+    display: inline-block;
+    height: 100%;
+    width: 80%;
+    left: 0px;
+    margin: auto;
+    color: var(--color-text);
+}
