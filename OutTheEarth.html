@@ -22,12 +22,12 @@
         <!-- sound buttons -->
         <div id="sound-menu-id" class="volume" style="bottom: 60px">
             <input id="sound-id" type="range" min="0" max="10" value="5">
-            <a href="javascript:changeSoundMenu()">S</a>
+            <a href="javascript:changeSoundMenuState()">S</a>
         </div>
 
         <div id="music-menu-id" class="volume" style="bottom: 10px">
             <input id="music-id" type="range" min="0" max="10" value="5">
-            <a href="javascript:changeMusicMenu()">M</a>
+            <a href="javascript:changeMusicMenuState()">M</a>
         </div>
 
         <!-- information menu -->
@@ -96,6 +96,7 @@
                 setMusicVolume(musicVolume) { this.musicVolume = musicVolume / 10.0; }
             };
             const AudioTrack = {
+                OPEN_MENU: "MENU",
                 CLICK: "CLICK",
                 OTHER: "NOTHING"
             };
@@ -122,6 +123,7 @@
             function playSound(audioTrack) {
                 const sound = new Audio();
                 switch (audioTrack) {
+                    case AudioTrack.OPEN_MENU: sound.src = "./menu_sound.mp3"; break;
                     case AudioTrack.CLICK: sound.src = "./mixkit.wav"; break;
                     default: console.log(AudioTrack.NOTHING);
                 }
@@ -129,23 +131,23 @@
                 sound.play();
             }
             
-            // menu about sound
-            function changeSoundMenu() {
+            // menu about sound and music
+            function changeSoundMenuState() {
                 var volume = document.getElementById("sound-menu-id");
                 volume.classList.toggle("volume-show");
-                playSound(AudioTrack.CLICK);
+                playSound(AudioTrack.OPEN_MENU);
             }
-            function changeMusicMenu() {
+            function changeMusicMenuState() {
                 var volume = document.getElementById("music-menu-id");
                 volume.classList.toggle("volume-show");
-                playSound(AudioTrack.CLICK);
+                playSound(AudioTrack.OPEN_MENU);
             }
 
             // basic menu
             function changeMenuState() {
                 var menu = document.getElementById("info-menu-id");
                 menu.classList.toggle("info-menu-show");
-                playSound(AudioTrack.CLICK);
+                playSound(AudioTrack.OPEN_MENU);
             }
             function changeChatState() {
                 var chat = document.getElementById("chat-menu-id");
@@ -156,11 +158,12 @@
                 closeBar.classList.toggle("chat-menu-bar-show");
                 if (chat.classList.contains("chat-menu-show") == false)
                     themeMenu.classList.remove("themes-show");
-                playSound(AudioTrack.CLICK);
+                playSound(AudioTrack.OPEN_MENU);
             }
             function changeThemesMenuState() {
                 var themes = document.getElementById("themes-menu-id");
                 themes.classList.toggle("themes-show");
+                playSound(AudioTrack.OPEN_MENU);
             }
 
             // preparation
