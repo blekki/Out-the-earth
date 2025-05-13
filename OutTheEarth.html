@@ -2,9 +2,10 @@
 <html>
     <head>
         <title>My project page</title>
-        <link rel="stylesheet" href="basic-styles.css" />
-        <link rel="stylesheet" href="menu-bars.css" />
-        <link rel="stylesheet" href="sliders.css" />
+        <link rel="stylesheet" href="basic-styles.css"/>
+        <link rel="stylesheet" href="menu-bars.css"/>
+        <link rel="stylesheet" href="sliders.css"/>
+        <link rel="stylesheet" href="user-prop.css"/>
     </head>
     
     <body class="basic"></body>
@@ -19,6 +20,11 @@
                 <a>Gallery</a>
             </div>
         </div>
+
+        <!-- star map -->
+        <!-- <canvas id="star-map" width="100%" height="100%" position="absolute"></canvas> -->
+        <image src="media/star_map.png" width="100%" height="100%" position="absolute"></image>
+
         <!-- sound buttons -->
         <div id="sound-menu-id" class="volume" style="bottom: 60px">
             <input id="sound-id" type="range" min="0" max="10" value="5">
@@ -29,6 +35,39 @@
             <input id="music-id" type="range" min="0" max="10" value="5">
             <a href="javascript:changeMusicMenuState()">M</a>
         </div>
+        
+        <!-- person information -->
+        <div class="user-icon" onclick="javascript:changePropState()"><a>U</a></div>
+        <div id="user-prop-id" class="user-info">
+            <div class="user-info-tabs">
+                <ul>
+                <li><a>Information</a></li>
+                <li><a>Achievements</a></li>
+                <li><a>Properties</a></li>
+                </ul>
+            </div>
+
+            <div class="user-info-page1">
+                <h1> </h1>
+                <div class="user-info-icon">
+                    <image class="user-info-icon-image" src="media/icons/080.png"></image>
+                    <image id="avatar-border-id" class="user-info-icon-image" src="media/icon borders/icon-1.png"></image>
+                    <div>
+                        <p>This information about kgvhbjioygtfgvhbnjij yggbhnji huyghbn johuiyg This information about kgvhbjioygtfgvhbnjij yggbhnji huyghbn johuiyg</p>
+                    </div>
+                </div>
+                <!-- <hr> -->
+                <div class="user-info-page1-iconlist">
+                    <image src="media/icon borders/icon-0.png" onclick="javascript:setIconBorder(0)"></image>
+                    <image src="media/icon borders/icon-1.png" onclick="javascript:setIconBorder(1)"></image>
+                    <image src="media/icon borders/icon-2.png" onclick="javascript:setIconBorder(2)"></image>
+                    <image src="media/icon borders/icon-3.png" onclick="javascript:setIconBorder(3)"></image>
+                    <image src="media/icon borders/icon-4.png" onclick="javascript:setIconBorder(4)"></image>
+                    <image src="media/icon borders/icon-5.png" onclick="javascript:setIconBorder(5)"></image>
+                    <image src="media/icon borders/icon-6.png" onclick="javascript:setIconBorder(6)"></image>
+                </div>
+            </div>
+        </div>
 
         <!-- information menu -->
         <div id="info-menu-id" class="info-menu">
@@ -38,6 +77,7 @@
             </div>
             
             <div class="info-menu-text">
+                <p>This information about kgvhbjioygtfgvhbnjij yggbhnji huyghbn johuiyg 56787 86789876t789 ijhbgvhuijk lmkhbgju ioklm jhbnk kiohuybjnjkm</p>
                 <p>This information about kgvhbjioygtfgvhbnjij yggbhnji huyghbn johuiyg 56787 86789876t789 ijhbgvhuijk lmkhbgju ioklm jhbnk kiohuybjnjkm</p>
                 <p>This information about kgvhbjioygtfgvhbnjij yggbhnji huyghbn johuiyg 56787 86789876t789 ijhbgvhuijk lmkhbgju ioklm jhbnk kiohuybjnjkm</p>
                 <p>This information about kgvhbjioygtfgvhbnjij yggbhnji huyghbn johuiyg 56787 86789876t789 ijhbgvhuijk lmkhbgju ioklm jhbnk kiohuybjnjkm</p>
@@ -84,96 +124,7 @@
         <audio id="audio-id" style="display: none;"></audio>
 
         <!-- javascript -->
-        <script type="text/javascript">
-            class Properties {
-                constructor() {
-                    this.soundVolume = document.getElementById("sound-id").value / 10.0;
-                    this.musicVolume = document.getElementById("music-id").value / 10.0;
-                }
-                getSoundVolume() { return this.soundVolume; }
-                getMusicVolume() { return this.musicVolume; }
-                setSoundVolume(soundVolume) { this.soundVolume = soundVolume / 10.0; }
-                setMusicVolume(musicVolume) { this.musicVolume = musicVolume / 10.0; }
-            };
-            const AudioTrack = {
-                OPEN_MENU: "MENU",
-                CLICK: "CLICK",
-                OTHER: "NOTHING"
-            };
-
-            const properties = new Properties();
-
-            // change sound volume
-            const soundSlider = document.getElementById("sound-id");
-            soundSlider.oninput = function() {
-                properties.setSoundVolume(soundSlider.value);
-                console.log(properties.getSoundVolume()); // logs
-            }
-            // change music volume
-            const musicSlider = document.getElementById("music-id");
-            musicSlider.oninput = function() {
-                properties.setMusicVolume(musicSlider.value);
-                console.log(properties.getMusicVolume()); // logs
-
-                const music = document.getElementById("audio-id");
-                music.volume = properties.getMusicVolume();
-            }
-
-            // play sound
-            function playSound(audioTrack) {
-                const sound = new Audio();
-                switch (audioTrack) {
-                    case AudioTrack.OPEN_MENU: sound.src = "./menu_sound.mp3"; break;
-                    case AudioTrack.CLICK: sound.src = "./mixkit.wav"; break;
-                    default: console.log(AudioTrack.NOTHING);
-                }
-                sound.volume = properties.getSoundVolume();
-                sound.play();
-            }
-            
-            // menu about sound and music
-            function changeSoundMenuState() {
-                var volume = document.getElementById("sound-menu-id");
-                volume.classList.toggle("volume-show");
-                playSound(AudioTrack.OPEN_MENU);
-            }
-            function changeMusicMenuState() {
-                var volume = document.getElementById("music-menu-id");
-                volume.classList.toggle("volume-show");
-                playSound(AudioTrack.OPEN_MENU);
-            }
-
-            // basic menu
-            function changeMenuState() {
-                var menu = document.getElementById("info-menu-id");
-                menu.classList.toggle("info-menu-show");
-                playSound(AudioTrack.OPEN_MENU);
-            }
-            function changeChatState() {
-                var chat = document.getElementById("chat-menu-id");
-                var closeBar = document.getElementById("chat-menu-close-id");
-                var themeMenu = document.getElementById("themes-menu-id");
-
-                chat.classList.toggle("chat-menu-show");
-                closeBar.classList.toggle("chat-menu-bar-show");
-                if (chat.classList.contains("chat-menu-show") == false)
-                    themeMenu.classList.remove("themes-show");
-                playSound(AudioTrack.OPEN_MENU);
-            }
-            function changeThemesMenuState() {
-                var themes = document.getElementById("themes-menu-id");
-                themes.classList.toggle("themes-show");
-                playSound(AudioTrack.OPEN_MENU);
-            }
-
-            // preparation
-            window.onload = function prepare() {
-                const audio = document.getElementById("audio-id");
-                audio.src = "./ObservingTheStar.opus";
-                audio.volume = document.getElementById("music-id").value / 10.0;
-                audio.loop = "true";
-                audio.play();
-            }
-        </script>
+        <script src="frame-logic.js"></script>
+        <script src="map.js"></script>
     </body>
 </html>
