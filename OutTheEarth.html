@@ -22,8 +22,7 @@
         </div>
 
         <!-- star map -->
-        <!-- <canvas id="star-map" width="100%" height="100%" position="absolute"></canvas> -->
-        <image src="media/star_map.png" width="100%" height="100%" position="absolute"></image>
+        <div id="container3D" class="map"></div>
 
         <!-- sound buttons -->
         <div id="sound-menu-id" class="volume" style="bottom: 60px">
@@ -38,7 +37,7 @@
         
         <!-- person information -->
         <div class="user-icon" onclick="javascript:changePropState()"><a>U</a></div>
-        <div id="user-prop-id" class="user-info">
+        <!-- <div id="user-prop-id" class="user-info">
             <div class="user-info-tabs">
                 <ul>
                 <li><a>Information</a></li>
@@ -56,7 +55,6 @@
                         <p>This information about kgvhbjioygtfgvhbnjij yggbhnji huyghbn johuiyg This information about kgvhbjioygtfgvhbnjij yggbhnji huyghbn johuiyg</p>
                     </div>
                 </div>
-                <!-- <hr> -->
                 <div class="user-info-page1-iconlist">
                     <image src="media/icon borders/icon-0.png" onclick="javascript:setIconBorder(0)"></image>
                     <image src="media/icon borders/icon-1.png" onclick="javascript:setIconBorder(1)"></image>
@@ -66,7 +64,7 @@
                     <image src="media/icon borders/icon-5.png" onclick="javascript:setIconBorder(5)"></image>
                     <image src="media/icon borders/icon-6.png" onclick="javascript:setIconBorder(6)"></image>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <!-- information menu -->
@@ -125,6 +123,8 @@
 
         <!-- javascript -->
         <script src="frame-logic.js"></script>
-        <script src="map.js"></script>
+        <script type="module">
+            import {} from 'http://127.0.0.1:5500/map.js';
+        </script>
     </body>
 </html>
