@@ -1,5 +1,5 @@
 import * as THREE from "https://cdn.skypack.dev/three@0.129.0/build/three.module.js";
-import { OrbitControls } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js";
+// import { OrbitControls } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
 
 const scene = new THREE.Scene();
@@ -23,20 +23,23 @@ var pitch_quat = new THREE.Quaternion(0, 0, 0, 1);
 var heading_quat = new THREE.Quaternion(0, 0, 0, 1);
 var temp = new THREE.Quaternion(0, 0, 0, 1);
 
-
+// let geometry = new THREE.SphereGeometry(1, 32, 32);
+// let texture = new THREE.TextureLoader().load("http://127.0.0.1:5500/media/test.texture.webp");
+// let material = new THREE.MeshBasicMaterial({map: texture});
+// let object = new THREE.Mesh(geometry, material);
+// scene.add(object);
 
 
 let object; // 3D object on a global variable
-// let objSource = 'space-sphere-ico.glb'; // object to render
-let objSource = 'star-map-test.glb';
+let objSource = 'space-sphere-ico.glb'; // object to render
+// let objSource = 'star-map-test.glb';
 // Instantiate a loader for the .gltf file
 const loader = new GLTFLoader();
 loader.load(
     `http://127.0.0.1:5500/media/${objSource}`,
     function (gltf) {
-        // if the file is loaded, add it to the scene
         object = gltf.scene;
-        scene.add(object);
+        scene.add(object); // add object to screen
     },
     function (xhr) {
         console.log((xhr.loaded / xhr.total * 100) + '% loaded'); // While it is loading, log the progress
@@ -57,8 +60,7 @@ camera.rotation.z = 0;
 const renderer = new THREE.WebGLRenderer({ alpha: true }); // true allows transparent background
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-// add the renderer to the DOM
-document.getElementById("container3D").appendChild(renderer.domElement);
+document.getElementById("container3D").appendChild(renderer.domElement); // add the renderer to the DOM
 
 // render scene
 function animate() {
@@ -74,6 +76,7 @@ function animate() {
 
     // apply queternions
     pitch_quat.setFromAxisAngle(axis, camera_pitch);
+    // camera_up.y *= Math.sin(camera_heading);
     heading_quat.setFromAxisAngle(camera_up, camera_heading);
     temp.multiplyQuaternions(pitch_quat, heading_quat);
     camera_direction.applyQuaternion(temp);
@@ -127,7 +130,6 @@ document.onwheel = (e) => { // change zoom
     camera.zoom = newZoom;
     camera.updateProjectionMatrix();
   }
-  console.log("zoom: ", camera.zoom);
 }
 // end of pack
 
