@@ -10,18 +10,15 @@ let startX = 0; let deltaX = 0;
 let startY = 0; let deltaY = 0;
 
 // <> Queternions <>
-// var matrix4 = new THREE.Matrix4();
-// const quaternion = new THREE.Quaternion();
-
+// properties for camera
 var camera_position = new THREE.Vector3(0, 0, 0);
 var camera_look_at = new THREE.Vector3(0, 0, -1);
 var camera_up = new THREE.Vector3(0, 1, 0);
 var camera_direction = new THREE.Vector3(0, 0, -1);
-var camera_position_delta = new THREE.Vector3(0, 0, 0);
-
-var camera_pitch   = 0;//Math.PI / 360.0;
-var camera_heading = 0;//Math.PI / 360.0;
-
+// rotation speed
+var camera_pitch   = 0;
+var camera_heading = 0;
+// everything for queternions
 var pitch_quat = new THREE.Quaternion(0, 0, 0, 1);
 var heading_quat = new THREE.Quaternion(0, 0, 0, 1);
 var temp = new THREE.Quaternion(0, 0, 0, 1);
@@ -63,15 +60,6 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 // add the renderer to the DOM
 document.getElementById("container3D").appendChild(renderer.domElement);
 
-// add lights to the scene
-// const topLight = new THREE.DirectionalLight(0xffffff, 1); // (color, intensity)
-// topLight.position.set(500, 500, 500) //top-left-position
-// topLight.castShadow = true;
-// scene.add(topLight);
-
-// const ambientLight = new THREE.AmbientLight(0x333333, objSource === "dino" ? 5 : 1);
-// scene.add(ambientLight);
-
 // render scene
 function animate() {
   requestAnimationFrame(animate);
@@ -79,40 +67,25 @@ function animate() {
   // <-- here we could add some code to update scene, adding some automatic movement
 
   if (mouseIsHold) {
-    // camera.rotation.x = deltaY;
-    // camera.rotation.y = deltaX;
-    // camera.rotation.z = deltaX;
-    // camera.rotation.y = deltaX;// * Math.cos(deltaY);
-    // camera.rotation.z = deltaX;// * Math.sin(deltaY);
-
-
-    // <> quet <>
+    // get camera properties
     camera_direction.subVectors(camera_look_at, camera_position).normalize();
     var axis = new THREE.Vector3(0, 0, 0);
     axis.crossVectors(camera_direction, camera_up);
 
-
+    // apply queternions
     pitch_quat.setFromAxisAngle(axis, camera_pitch);
     heading_quat.setFromAxisAngle(camera_up, camera_heading);
     temp.multiplyQuaternions(pitch_quat, heading_quat);
-
     camera_direction.applyQuaternion(temp);
-    
-    // camera.rotation.x = camera_direction.x;
-    // camera.rotation.y = camera_direction.y;
-    // camera.rotation.z = camera_direction.z;
 
-    // camera_position.add(camera_position_delta);
+    // apply all on camera
     camera_look_at.addVectors(camera_position, camera_direction);
-    // camera.position.copy(camera_position);
     camera.up.copy(camera_up);
     camera.lookAt(camera_look_at);
 
+    // reset rotation speed
     camera_pitch   = 0;
     camera_heading = 0;
-
-    // console.log(camera.rotation.x, camera.rotation.y, camera.rotation.z);
-    // camera_position_delta.multiplyScalar(.8);
   }
   renderer.render(scene, camera);
 }
@@ -127,21 +100,16 @@ window.addEventListener("resize", function () {
 
 
 
-// rotation pack
+// mouse triger pack
 document.onmousemove = (e) => {
   if (mouseIsHold) {
-    // deltaX += (e.clientX - startX) / window.innerWidth;
-    // deltaY += (e.clientY - startY) / window.innerHeight;
     deltaX = (e.clientX - startX) / window.innerWidth;
     deltaY = (e.clientY - startY) / window.innerHeight;
     startX = e.clientX;
     startY = e.clientY;
 
-    // camera_pitch   = (Math.abs(deltaY) > 0.01) ? deltaY : 0.0;
-    // camera_heading = (Math.abs(deltaX) > 0.01) ? deltaX : 0.0;
     camera_pitch   = deltaY;
     camera_heading = deltaX;
-    console.log(temp.x, " : ", temp.y);
   }
 }
 document.onmousedown = (e) => {
