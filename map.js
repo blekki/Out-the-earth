@@ -100,7 +100,7 @@ window.addEventListener("resize", function () {
 
 
 
-// mouse triger pack
+// mouse trigger pack
 document.onmousemove = (e) => {
   if (mouseIsHold) {
     deltaX = (e.clientX - startX) / window.innerWidth;
@@ -108,8 +108,8 @@ document.onmousemove = (e) => {
     startX = e.clientX;
     startY = e.clientY;
 
-    camera_pitch   = deltaY;
-    camera_heading = deltaX;
+    camera_pitch   = deltaY / camera.zoom;
+    camera_heading = deltaX / camera.zoom;
   }
 }
 document.onmousedown = (e) => {
@@ -119,6 +119,15 @@ document.onmousedown = (e) => {
 }
 document.onmouseup = () => {
   mouseIsHold = false;
+}
+
+document.onwheel = (e) => { // change zoom
+  let newZoom = camera.zoom + ((e.deltaY > 0) ? -0.1 : 0.1);
+  if (newZoom > 0.5 && newZoom < 1.6) {
+    camera.zoom = newZoom;
+    camera.updateProjectionMatrix();
+  }
+  console.log("zoom: ", camera.zoom);
 }
 // end of pack
 
