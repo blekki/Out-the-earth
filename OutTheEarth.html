@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>My project page</title>
+        <title>Out the earth</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="basic-styles.css"/>
         <link rel="stylesheet" href="menu-bars.css"/>
         <link rel="stylesheet" href="sliders.css"/>
@@ -24,20 +25,10 @@
                 <a>Gallery</a>
             </div>
         </div>
-
+        
+        <div>
         <!-- star map -->
         <div id="container3D" class="map"></div>
-
-        <!-- sound buttons -->
-        <div id="sound-menu-id" class="volume" style="bottom: 60px">
-            <input id="sound-id" type="range" min="0" max="10" value="5">
-            <a href="javascript:changeSoundMenuState()">S</a>
-        </div>
-
-        <div id="music-menu-id" class="volume" style="bottom: 10px">
-            <input id="music-id" type="range" min="0" max="10" value="5">
-            <a href="javascript:changeMusicMenuState()">M</a>
-        </div>
         
         <!-- person information -->
         <div class="user-icon" onclick="javascript:changePropState()"><a>U</a></div>
@@ -88,7 +79,7 @@
                 <p>dfgkebdhjfhdjko wejfhwefkjgsdfjskjfhdjsklfndhjgds fn gndfkjg fgkdf gkdfng</p>
             </div>
         </div>
-        <div class="info-menu-bar">
+        <div id="info-menu-state-id" class="info-menu-bar">
             <span class="menu-bar-text">Information page</span>
             <a href="javascript:changeMenuState()" class="menu-bar-close">=</a>
         </div>
@@ -123,7 +114,17 @@
             <a href="javascript:changeChatState()" class="menu-bar-close">=</a>
         </div>
         
+        <!-- audio -->
         <audio id="audio-id" style="display: none;"></audio>
+        <div id="sound-menu-id" class="volume-sound">
+            <input id="sound-id" class="volume-input" type="range" min="0" max="10" value="5">
+            <a class="volume-a" href="javascript:changeSoundMenuState()">S</a>
+        </div>
+
+        <div id="music-menu-id" class="volume-music">
+            <input id="music-id" class="volume-input" type="range" min="0" max="10" value="5">
+            <a class="volume-a" href="javascript:changeMusicMenuState()">M</a>
+        </div>
 
         <!-- javascript -->
         <script src="frame-logic.js"></script>

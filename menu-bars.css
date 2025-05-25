@@ -1,13 +1,175 @@
+@media screen and (max-width: 600px) {
+    .vertical-menu {
+        width: 40px;
+    }
+
+    .info-menu {
+        left: 50px;
+        width: 200px;
+    }
+    .info-menu-bar {
+        left: 50px;
+        width: 200px;
+        height: 40px;
+        line-height: 2;
+        font-size: medium;
+    }
+    .info-menu-bar span {
+        width: 80%;
+    }
+    .info-menu-bar a {
+        width: 20%;
+    }
+
+    .chat-menu {
+        left: 50px;
+        width: 200px;
+    }
+    .chat-menu-bar {
+        left: 50px;
+        width: 200px;
+        height: 40px;
+        line-height: 2;
+        font-size: medium;
+    }
+    .chat-menu-bar span {
+        width: 80%;
+    }
+    .chat-menu-bar a {
+        width: 20%;
+    }
+
+    .chat-bar input {
+        width: 71%;
+        height: 100%;
+    }
+    .chat-bar a {
+        width: 28%;
+        height: 100%;
+    }
+
+    .themes {
+        left: 260px;
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1920px) {
+    .vertical-menu {
+        width: 60px;
+    }
+
+    .info-menu {
+        left: 70px;
+        width: 350px;
+    }
+    .info-menu-bar {
+        left: 70px;
+        width: 350px;
+        height: 40px;
+        line-height: 2;
+        font-size: medium;
+    }
+    .info-menu-bar span {
+        width: 90%;
+    }
+    .info-menu-bar a {
+        width: 10%;
+    }
+
+    .chat-menu {
+        left: 70px;
+        width: 350px;
+    }
+    .chat-menu-bar {
+        left: 70px;
+        width: 350px;
+        height: 40px;
+        line-height: 2;
+        font-size: medium;
+    }
+    .chat-menu-bar span {
+        width: 90%;
+    }
+    .chat-menu-bar a {
+        width: 10%;
+    }
+    
+    .chat-bar input {
+        width: 85%;
+        height: 100%;
+    }
+    .chat-bar a {
+        width: 14%;
+        height: 100%;
+    }
+
+    .themes {
+        left: 430px;
+    }
+}
+
+@media screen and (min-width: 1921px){
+    .vertical-menu {
+        width: 80px;
+    }
+
+    .info-menu {
+        left: 90px;
+        width: 450px;
+    }
+    .info-menu-bar {
+        left: 90px;
+        width: 450px;
+        height: 50px;
+        line-height: 3;
+        font-size: large;
+    }
+    .info-menu-bar span {
+        width: 90%;
+    }
+    .info-menu-bar a {
+        width: 10%;
+    }
+
+    .chat-menu {
+        left: 90px;
+        width: 450px;
+    }
+    .chat-menu-bar {
+        left: 90px;
+        width: 450px;
+        height: 50px;
+        line-height: 3;
+        font-size: large;
+    }
+    .chat-menu-bar span {
+        width: 90%;
+    }
+    .chat-menu-bar a {
+        width: 10%;
+    }
+
+    .chat-bar input {
+        width: 85%;
+        height: 100%;
+    }
+    .chat-bar a {
+        width: 14%;
+        height: 100%;
+    }
+
+    .themes {
+        left: 550px;
+    }
+}
+/* ##################################### */
 .vertical-menu {
     position: fixed;
     display: grid;
-    /* max-width: 60px; */
-
-    width: 60px;
-    height: 100%;
-    
+    height: 100vh;
     background-color: var(--color-2);
     grid-template-rows: 10% 30% 30% 30% 1fr;
+    transition: var(--opening-speed), height 0.0s;
 }
 
 .logo {
@@ -48,41 +210,17 @@
 }
 /* <><><><><><><><><><><><><><><><><><><><><><><><><> */
 
-.info-menu{
-    position: absolute;
-    left: 80px; 
-    top: 60px;
-    width: 350px;
-    height: 0px;
-    max-height: 58%;
-    
-    border-bottom-right-radius: var(--border-radius);
-    border-bottom-left-radius: var(--border-radius);
-
-    line-height: 1.5;
-    background-color: var(--color-1);
-    overflow: auto;
-
-    transition: var(--closing-speed);
-}
-
-.info-menu-show {
-    height: 570px;
-    transition: height var(--opening-speed);
-}
-
 .info-menu-bar {
     position: absolute;
-    left: 80px;
-    top: 20px;
-    width: 350px;
-    height: 40px;
-
-    line-height: 2;
+    top: 10px;
     background-color: var(--color-2);
     color: var(--color-1);
-
     overflow: hidden;
+    transition: var(--opening-speed);
+}
+.info-menu-bar-state {
+    height: 40px;
+    transition: height var(--closing-speed);
 }
 .info-menu-bar * {
     transition: var(--hover-speed);
@@ -95,6 +233,27 @@
     background-color: var(--color-2hover);
     transform: translateY(-4px);
     transition: var(--hover-speed);
+}
+
+.info-menu {
+    position: absolute;
+    top: 50px;
+    height: 0px;
+    
+    border-bottom-right-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+
+    line-height: 1.5;
+    background-color: var(--color-1);
+    overflow: auto;
+
+    transition: var(--closing-speed);
+}
+
+.info-menu-show {
+    /* height: 570px; */
+    height: max(55%, 300px);
+    transition: height var(--opening-speed);
 }
 
 .info-menu img {
@@ -114,10 +273,9 @@
 
 .chat-menu {
     position: absolute;
-    left: 80px;
     bottom: 10px;
-    width: 350px;
-    height: 10px; 
+    height: 0px;
+    
     border-radius: var(--border-radius);
     line-height: 1.5;
     background-color: var(--color-1);
@@ -133,12 +291,7 @@
 
 .chat-menu-bar {
     position: absolute;
-    left: 80px;
-    bottom: 10px; 
-    width: 350px;
-    height: 40px;
-
-    line-height: 2;
+    bottom: 10px;
     color: var(--color-1);
     background-color: var(--color-2);
     overflow: hidden;
@@ -166,13 +319,14 @@
 .chat-menu-bar a:hover {
     background-color: var(--color-2hover);
 }
-
+/* chat stream */
 .chat-stream {
     position: absolute;
     left: 10px;
-    top: 10px;
-    width: 330px;
-    height: 190px;
+    /* top: 10px; */
+    bottom: 12px;
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
     background-color: var(--color-1);
 
     overflow: auto;
@@ -183,8 +337,9 @@
     display: inline-block;
     left: 10px;
     bottom: 10px;
-    width: 330px;
+    /* width: 330px; */
     height: 40px;
+    width: calc(100% - 10px);
 
     overflow: hidden;
 }
@@ -196,8 +351,8 @@
     background-color: var(--color-2);
     color: var(--color-text);
     left: 0px;
-    width: 85%;
-    height: 100%;
+    /* width: 85%; */
+    /* height: 100%; */
     border-style: none;
 
     overflow: auto;
@@ -207,9 +362,9 @@
     position: absolute;
     text-align: center;
     text-decoration: none;
-    right: 0px;
-    width: 14%;
-    height: 100%;
+    right: 5px;
+    /* width: 14%; */
+    /* height: 100%; */
 
     color: var(--color-text);
     font-size: large;
@@ -228,21 +383,17 @@
 .themes {
     position: absolute;
     text-align: center;
-    left: 440px;
     bottom: 10px;
     width: 0px;
+    /* left: 440px; */
     height: 270px;
-    
-    font-size: large;
-    line-height: 1.5;
     background-color: var(--color-1);
-    
     overflow: hidden;
     transition: width var(--closing-speed);
 }
 
 .themes-show {
-    width: 120px;
+    width: 100px;
     transition: width var(--opening-speed);
 }
 
@@ -251,6 +402,7 @@
     text-decoration: none;
     width: 100%;
     height: 40px;
+    font-size: large;
     background-color: var(--color-2);
     overflow: auto;
 

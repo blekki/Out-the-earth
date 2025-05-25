@@ -1,8 +1,54 @@
-.volume {
+@media screen and (max-width: 600px) {
+    .volume-sound {
+        width: 40px;
+        height: 40px;
+        bottom: calc(100% - 110px);
+    }
+    .volume-music {
+        width: 40px;
+        height: 40px;
+        bottom: calc(100% - 160px);
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1920px) {
+    .volume-sound {
+        width: 40px;
+        height: 40px;
+        bottom: 60px;
+    }
+    .volume-music {
+        width: 40px;
+        height: 40px;
+        bottom: 10px;
+    }
+}
+
+@media screen and (min-width: 1921px){
+    .volume-sound {
+        width: 40px;
+        height: 40px;
+        bottom: 80px;
+    }
+    .volume-music {
+        width: 60px;
+        height: 60px;
+        bottom: 10px;
+    }
+}
+
+.volume-sound {
     position: absolute;
     right: 10px;
-    width: 40px;
-    height: 40px;
+    /* width: 40px; */
+    /* height: 40px; */
+    background-color: var(--color-2);
+    transition: var(--closing-speed);
+}
+
+.volume-music {
+    position: absolute;
+    right: 10px;
     background-color: var(--color-2);
     transition: var(--closing-speed);
 }
@@ -18,7 +64,7 @@
     transition: var(--opening-speed);
 }
 
-.volume a {
+.volume-a {
     position: absolute;
     display: inline-block;
     text-decoration: none;
@@ -33,7 +79,7 @@
     transition: var(--hover-speed);
 }
 
-.volume input {
+.volume-input {
     position: absolute;
     display: inline-block;
     height: 100%;

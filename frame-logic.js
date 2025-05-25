@@ -60,7 +60,11 @@ function changeMusicMenuState() {
 // basic menu
 function changeMenuState() {
     var menu = document.getElementById("info-menu-id");
+    var closeBar = document.getElementById("info-menu-state-id");
+
     menu.classList.toggle("info-menu-show");
+    closeBar.classList.toggle("info-menu-bar-state");
+    
     playSound(AudioTrack.OPEN_MENU);
 }
 function changeChatState() {
