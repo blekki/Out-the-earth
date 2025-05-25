@@ -3,7 +3,10 @@ import * as THREE from "https://cdn.skypack.dev/three@0.129.0/build/three.module
 import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
 
 const scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x000000);
 const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.set(0, 0, 0);
+camera.rotation.set(0, 0, 0);
 // PerspectiveCamera was 75
 let mouseIsHold = false;
 let startX = 0; let deltaX = 0;
@@ -23,38 +26,24 @@ var pitch_quat = new THREE.Quaternion(0, 0, 0, 1);
 var heading_quat = new THREE.Quaternion(0, 0, 0, 1);
 var temp = new THREE.Quaternion(0, 0, 0, 1);
 
-// let geometry = new THREE.SphereGeometry(1, 32, 32);
-// let texture = new THREE.TextureLoader().load("http://127.0.0.1:5500/media/test.texture.webp");
-// let material = new THREE.MeshBasicMaterial({map: texture});
-// let object = new THREE.Mesh(geometry, material);
-// scene.add(object);
-
-
-let object; // 3D object on a global variable
-let objSource = 'space-sphere-ico.glb'; // object to render
-// let objSource = 'star-map-test.glb';
-// Instantiate a loader for the .gltf file
-const loader = new GLTFLoader();
-loader.load(
-    `http://127.0.0.1:5500/media/${objSource}`,
-    function (gltf) {
-        object = gltf.scene;
-        scene.add(object); // add object to screen
-    },
-    function (xhr) {
-        console.log((xhr.loaded / xhr.total * 100) + '% loaded'); // While it is loading, log the progress
-    },
-    function (error) {
-        console.error(error);
-    }
+let object;
+let texture  = new THREE.TextureLoader().load(
+  "http://127.0.0.1:5500/media/star_map.jpg",
+  function () {
+    let geometry = new THREE.SphereGeometry(1, 16, 16);
+    let material = new THREE.MeshBasicMaterial({map: texture, side: THREE.BackSide});
+        object   = new THREE.Mesh(geometry, material);
+    console.log('Texture loaded successful: ');
+    scene.add(object);
+    animate();
+  },
+  function (xhr) {
+    console.log((xhr.loaded / xhr.total * 100) + '% loaded'); // While it is loading, log the progress
+  },
+  function (error) {
+    console.error(error);
+  }
 );
-camera.position.x = 0;
-camera.position.y = 0;
-camera.position.z = 0;
-
-camera.rotation.x = 0;
-camera.rotation.y = 0;
-camera.rotation.z = 0;
 
 // instantiate a new renderer and set its size
 const renderer = new THREE.WebGLRenderer({ alpha: true }); // true allows transparent background
@@ -76,12 +65,11 @@ function animate() {
 
     // apply queternions
     pitch_quat.setFromAxisAngle(axis, camera_pitch);
-    // camera_up.y *= Math.sin(camera_heading);
     heading_quat.setFromAxisAngle(camera_up, camera_heading);
     temp.multiplyQuaternions(pitch_quat, heading_quat);
     camera_direction.applyQuaternion(temp);
 
-    // apply all on camera
+    // apply changed on camera
     camera_look_at.addVectors(camera_position, camera_direction);
     camera.up.copy(camera_up);
     camera.lookAt(camera_look_at);
@@ -99,8 +87,6 @@ window.addEventListener("resize", function () {
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
-
-
 
 
 // mouse trigger pack
@@ -126,7 +112,7 @@ document.onmouseup = () => {
 
 document.onwheel = (e) => { // change zoom
   let newZoom = camera.zoom + ((e.deltaY > 0) ? -0.1 : 0.1);
-  if (newZoom > 0.5 && newZoom < 1.6) {
+  if (newZoom > 0.5 && newZoom <= 2.5) {
     camera.zoom = newZoom;
     camera.updateProjectionMatrix();
   }
