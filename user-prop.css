@@ -7,7 +7,6 @@
     color: var(--color-text);
     text-align: center;
     line-height: 3;
-    /* background-color: var(--color-2); */
     transition: var(--hover-speed);
 }
 
@@ -29,7 +28,6 @@
 .user-info {
     position: absolute;
     text-decoration: none;
-    /* top: calc(50% - 250px); */
     right: calc(50% - 300px);
     width: 600px;
     height: 500px;

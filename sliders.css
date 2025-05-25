@@ -40,8 +40,6 @@
 .volume-sound {
     position: absolute;
     right: 10px;
-    /* width: 40px; */
-    /* height: 40px; */
     background-color: var(--color-2);
     transition: var(--closing-speed);
 }
