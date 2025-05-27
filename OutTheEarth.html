@@ -26,41 +26,8 @@
             </div>
         </div>
         
-        <div>
         <!-- star map -->
         <div id="container3D" class="map"></div>
-        
-        <!-- person information -->
-        <div class="user-icon" onclick="javascript:changePropState()"><a>U</a></div>
-        <!-- <div id="user-prop-id" class="user-info">
-            <div class="user-info-tabs">
-                <ul>
-                <li><a>Information</a></li>
-                <li><a>Achievements</a></li>
-                <li><a>Properties</a></li>
-                </ul>
-            </div>
-
-            <div class="user-info-page1">
-                <h1> </h1>
-                <div class="user-info-icon">
-                    <image class="user-info-icon-image" src="media/icons/080.png"></image>
-                    <image id="avatar-border-id" class="user-info-icon-image" src="media/icon borders/icon-1.png"></image>
-                    <div>
-                        <p>This information about kgvhbjioygtfgvhbnjij yggbhnji huyghbn johuiyg This information about kgvhbjioygtfgvhbnjij yggbhnji huyghbn johuiyg</p>
-                    </div>
-                </div>
-                <div class="user-info-page1-iconlist">
-                    <image src="media/icon borders/icon-0.png" onclick="javascript:setIconBorder(0)"></image>
-                    <image src="media/icon borders/icon-1.png" onclick="javascript:setIconBorder(1)"></image>
-                    <image src="media/icon borders/icon-2.png" onclick="javascript:setIconBorder(2)"></image>
-                    <image src="media/icon borders/icon-3.png" onclick="javascript:setIconBorder(3)"></image>
-                    <image src="media/icon borders/icon-4.png" onclick="javascript:setIconBorder(4)"></image>
-                    <image src="media/icon borders/icon-5.png" onclick="javascript:setIconBorder(5)"></image>
-                    <image src="media/icon borders/icon-6.png" onclick="javascript:setIconBorder(6)"></image>
-                </div>
-            </div> -->
-        </div>
 
         <!-- information menu -->
         <div id="info-menu-id" class="info-menu">
@@ -98,7 +65,7 @@
             </div>
         </div>
         <div id="themes-menu-id" class="themes">
-            <a>Theme Basic</a>
+            <a>Basic</a>
             <a>Theme+</a>
             <a>A</a>
             <a>B</a>
@@ -113,6 +80,38 @@
             <span class="menu-bar-text">Tiny chat</span>
             <a href="javascript:changeChatState()" class="menu-bar-close">=</a>
         </div>
+
+        <!-- person information -->
+        <div class="user-icon" onclick="javascript:changePropState()"><a>U</a></div>
+        <div id="user-prop-id" class="user-info">
+            <div class="user-info-tabs">
+                <ul>
+                <li><a>Information</a></li>
+                <li><a>Achievements</a></li>
+                <li><a>Properties</a></li>
+                </ul>
+            </div>
+
+            <div class="user-info-page1">
+                <h1> </h1>
+                <div class="user-info-icon">
+                    <image class="user-info-icon-image" src="media/icons/080.png"></image>
+                    <image id="avatar-border-id" class="user-info-icon-image" src="media/icon borders/icon-1.png"></image>
+                    <div>
+                        <p>This information about kgvhbjioygtfgvhbnjij yggbhnji huyghbn johuiyg This information about kgvhbjioygtfgvhbnjij yggbhnji huyghbn johuiyg</p>
+                    </div>
+                </div>
+                <div class="user-info-page1-iconlist">
+                    <image src="media/icon borders/icon-0.png" onclick="javascript:setIconBorder(0)"></image>
+                    <image src="media/icon borders/icon-1.png" onclick="javascript:setIconBorder(1)"></image>
+                    <image src="media/icon borders/icon-2.png" onclick="javascript:setIconBorder(2)"></image>
+                    <image src="media/icon borders/icon-3.png" onclick="javascript:setIconBorder(3)"></image>
+                    <image src="media/icon borders/icon-4.png" onclick="javascript:setIconBorder(4)"></image>
+                    <image src="media/icon borders/icon-5.png" onclick="javascript:setIconBorder(5)"></image>
+                    <image src="media/icon borders/icon-6.png" onclick="javascript:setIconBorder(6)"></image>
+                </div>
+            </div>
+        </div>
         
         <!-- audio -->
         <audio id="audio-id" style="display: none;"></audio>
@@ -120,7 +119,6 @@
             <input id="sound-id" class="volume-input" type="range" min="0" max="10" value="5">
             <a class="volume-a" href="javascript:changeSoundMenuState()">S</a>
         </div>
-
         <div id="music-menu-id" class="volume-music">
             <input id="music-id" class="volume-input" type="range" min="0" max="10" value="5">
             <a class="volume-a" href="javascript:changeMusicMenuState()">M</a>

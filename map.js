@@ -88,9 +88,10 @@ window.addEventListener("resize", function () {
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-
 // mouse trigger pack
-document.onmousemove = (e) => {
+const spaceMap = document.getElementById("container3D");
+spaceMap.addEventListener('mousemove', (e) => {
+  console.log("move");
   if (mouseIsHold) {
     deltaX = (e.clientX - startX) / window.innerWidth;
     deltaY = (e.clientY - startY) / window.innerHeight;
@@ -100,25 +101,25 @@ document.onmousemove = (e) => {
     camera_pitch   = deltaY / camera.zoom;
     camera_heading = deltaX / camera.zoom;
   }
-}
-document.onmousedown = (e) => {
+});
+
+spaceMap.addEventListener('mousedown', (e) => {
+  console.log("down");
   mouseIsHold = true;
   startX = e.clientX;
   startY = e.clientY;
-}
-document.onmouseup = () => {
-  mouseIsHold = false;
-}
+});
 
-document.onwheel = (e) => { // change zoom
+spaceMap.addEventListener('mouseup', () => {
+  console.log("up");
+  mouseIsHold = false;
+});
+
+spaceMap.addEventListener('wheel', (e) => {
   let newZoom = camera.zoom + ((e.deltaY > 0) ? -0.1 : 0.1);
   if (newZoom > 0.5 && newZoom <= 2.5) {
     camera.zoom = newZoom;
     camera.updateProjectionMatrix();
   }
-}
+});
 // end of pack
-
-
-// start rendering
-animate();

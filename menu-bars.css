@@ -166,6 +166,7 @@
 .vertical-menu {
     position: fixed;
     display: grid;
+    text-decoration: none;
     height: 100vh;
     background-color: var(--color-2);
     grid-template-rows: 10% 30% 30% 30% 1fr;
@@ -187,7 +188,7 @@
 
 .logo:hover {
     background-color: var(--color-4);
-    border-right: 2px solid white;
+    border: 3px solid white;
     transition: 1.4s;
 }
 
@@ -375,7 +376,7 @@
     width: 0px;
     height: 270px;
     background-color: var(--color-1);
-    overflow: hidden;
+    overflow: auto;
     transition: width var(--closing-speed);
 }
 

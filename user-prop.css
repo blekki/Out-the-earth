@@ -18,28 +18,37 @@
     background-color: var(--color-2);
     border-radius: 100%;
     transition: var(--hover-speed);
+    border: 1px solid white;
 }
 
 .user-icon :hover {
     background-color: var(--color-2hover);
     transition: var(--hover-speed);
 }
-
+/* user info window */
 .user-info {
     position: absolute;
     text-decoration: none;
     right: calc(50% - 300px);
+    top: calc(50% - 250px);
     width: 600px;
     height: 500px;
     background-color: var(--color-1);
     color: var(--color-text);
+    opacity: 0%;
+    visibility: hidden;
+    transition: calc(var(--opening-speed));
+}
 
-    transition: calc(var(--opening-speed) * 2);
+.user-info:before {
+    opacity: 0%;
+    transition: 2s;
 }
 
 .user-info-show {
-    transform: translateY(-180%);
-    transition: calc(var(--closing-speed) * 2);
+    opacity: 100%;
+    visibility: visible;
+    transition: calc(var(--closing-speed));
 }
 
 /* Menu bar */
@@ -67,8 +76,8 @@
 
 .user-info-tabs ul li a {
     display: inline-block;
-    width: 100%;
     text-decoration: none;
+    width: 100%;
     line-height: 2.5;
     background-color: var(--color-2);
     transition: var(--hover-speed);
