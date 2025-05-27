@@ -1,6 +1,6 @@
 import * as THREE from "https://cdn.skypack.dev/three@0.129.0/build/three.module.js";
 // import { OrbitControls } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js";
-import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
+// import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
 
 const scene = new THREE.Scene();
       scene.background = new THREE.Color(0x000000);
@@ -55,8 +55,6 @@ document.getElementById("container3D").appendChild(renderer.domElement); // add 
 function animate() {
   requestAnimationFrame(animate);
   
-  // <-- here we could add some code to update scene, adding some automatic movement
-
   if (mouseIsHold) {
     // get camera properties
     camera_direction.subVectors(camera_look_at, camera_position).normalize();
@@ -68,6 +66,7 @@ function animate() {
     heading_quat.setFromAxisAngle(camera_up, camera_heading);
     temp.multiplyQuaternions(pitch_quat, heading_quat);
     camera_direction.applyQuaternion(temp);
+    camera_up.applyQuaternion(temp);
 
     // apply changed on camera
     camera_look_at.addVectors(camera_position, camera_direction);
@@ -91,7 +90,6 @@ window.addEventListener("resize", function () {
 // mouse trigger pack
 const spaceMap = document.getElementById("container3D");
 spaceMap.addEventListener('mousemove', (e) => {
-  console.log("move");
   if (mouseIsHold) {
     deltaX = (e.clientX - startX) / window.innerWidth;
     deltaY = (e.clientY - startY) / window.innerHeight;
@@ -104,14 +102,12 @@ spaceMap.addEventListener('mousemove', (e) => {
 });
 
 spaceMap.addEventListener('mousedown', (e) => {
-  console.log("down");
   mouseIsHold = true;
   startX = e.clientX;
   startY = e.clientY;
 });
 
 spaceMap.addEventListener('mouseup', () => {
-  console.log("up");
   mouseIsHold = false;
 });
 

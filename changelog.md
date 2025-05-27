@@ -3,7 +3,7 @@
 ## Updating for 22.05.2025-26.05.2025
 
 ### Basic
-1. Update: now logo has around full borders (not only right side) when is hover. Before it looks like a button, but was't it.
+1. Update: now logo has around full borders (not only right side) when is hover. Before it looks like a button, but wasn't it.
 
 2. Update: replace on top-right on 10 pixels information window. It was unsymmetrically with bottom chat window.
 
@@ -14,6 +14,8 @@
 5. Update: user-icon has a 1px border.
 
 6. Update: change user-prop-window animation for better experience. 
+
+7. Update: camera rotation can rotate through the poles;
 
 
 ### Bugfix
@@ -28,4 +30,4 @@
 
 5. Bugfix: user properties window under information window.
 
-6. Bugfix: fix possibillity move star-map when mouse over other windows.
+6. Bugfix: fix possibility move star-map when mouse over other windows.
