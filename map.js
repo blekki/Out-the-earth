@@ -33,7 +33,6 @@ let texture  = new THREE.TextureLoader().load(
     let geometry = new THREE.SphereGeometry(1, 16, 16);
     let material = new THREE.MeshBasicMaterial({map: texture, side: THREE.BackSide});
         object   = new THREE.Mesh(geometry, material);
-    console.log('Texture loaded successful: ');
     scene.add(object);
     animate();
   },
